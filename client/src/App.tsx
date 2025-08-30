@@ -7,6 +7,7 @@ import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
 import Demo from "@/pages/demo";
 import TestLeads from "@/pages/test-leads";
+import Debug from "@/pages/debug";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/demo" component={Demo} />
       <Route path="/test-leads" component={TestLeads} />
+      <Route path="/debug" component={Debug} />
       <Route component={NotFound} />
     </Switch>
   );

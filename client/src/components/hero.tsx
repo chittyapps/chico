@@ -39,6 +39,13 @@ export default function Hero() {
                 <Play className="w-4 h-4 mr-2" />
                 Try Live Demo
               </Button>
+              <a 
+                href="/debug" 
+                className="text-sm text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+                data-testid="link-debug"
+              >
+                Debug buttons →
+              </a>
             </div>
 
             <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0 text-sm text-secondary dark:text-gray-400">
