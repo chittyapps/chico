@@ -11,6 +11,7 @@ export default function Header() {
     { href: "#features", label: "Features" },
     { href: "#pricing", label: "Pricing" },
     { href: "#how-it-works", label: "How It Works" },
+    { href: "/test-leads", label: "Test AI", isLink: true },
   ];
 
   const scrollToSection = (href: string) => {
@@ -32,16 +33,27 @@ export default function Header() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="text-secondary hover:text-dark dark:text-gray-300 dark:hover:text-white transition-colors"
-                data-testid={`button-nav-${item.label.toLowerCase().replace(' ', '-')}`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {navigationItems.map((item) => 
+              item.isLink ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-secondary hover:text-dark dark:text-gray-300 dark:hover:text-white transition-colors"
+                  data-testid={`link-nav-${item.label.toLowerCase().replace(' ', '-')}`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-secondary hover:text-dark dark:text-gray-300 dark:hover:text-white transition-colors"
+                  data-testid={`button-nav-${item.label.toLowerCase().replace(' ', '-')}`}
+                >
+                  {item.label}
+                </button>
+              )
+            )}
             <Button variant="ghost" className="text-secondary hover:text-dark dark:text-gray-300 dark:hover:text-white" data-testid="button-login">
               Login
             </Button>
@@ -60,16 +72,28 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col space-y-4 mt-6">
-                  {navigationItems.map((item) => (
-                    <button
-                      key={item.href}
-                      onClick={() => scrollToSection(item.href)}
-                      className="text-left py-2 text-secondary hover:text-dark dark:text-gray-300 dark:hover:text-white transition-colors"
-                      data-testid={`button-mobile-nav-${item.label.toLowerCase().replace(' ', '-')}`}
-                    >
-                      {item.label}
-                    </button>
-                  ))}
+                  {navigationItems.map((item) => 
+                    item.isLink ? (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="text-left py-2 text-secondary hover:text-dark dark:text-gray-300 dark:hover:text-white transition-colors"
+                        data-testid={`link-mobile-nav-${item.label.toLowerCase().replace(' ', '-')}`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <button
+                        key={item.href}
+                        onClick={() => scrollToSection(item.href)}
+                        className="text-left py-2 text-secondary hover:text-dark dark:text-gray-300 dark:hover:text-white transition-colors"
+                        data-testid={`button-mobile-nav-${item.label.toLowerCase().replace(' ', '-')}`}
+                      >
+                        {item.label}
+                      </button>
+                    )
+                  )}
                   <hr className="border-gray-200 dark:border-gray-700" />
                   <Button variant="ghost" className="justify-start text-secondary hover:text-dark dark:text-gray-300 dark:hover:text-white" data-testid="button-mobile-login">
                     Login

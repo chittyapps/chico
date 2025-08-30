@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertPropertySchema, insertLeadSchema, insertTenantSchema, insertUserSchema } from "@shared/schema";
-import { categorizeLeadMessage, generateFollowUpMessage } from "./services/openai";
+import { categorizeLeadMessage, generateFollowUpMessage } from "./services/claude";
 import { sendSMS, sendLeadAutoResponse, parseIncomingSMS, sendVisitorApprovalRequest, sendVisitorApprovalResponse } from "./services/twilio";
 
 export async function registerRoutes(app: Express): Promise<Server> {
