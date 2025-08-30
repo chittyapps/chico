@@ -30,6 +30,14 @@
   --chico-accent: hsl(159, 64%, 41%);
   --chico-neutral: hsl(210, 40%, 98%);
   --chico-dark: hsl(217, 33%, 17%);
+  
+  /* Text colors for proper contrast */
+  --text-dark: hsl(217, 33%, 17%);
+  --text-light: hsl(0, 0%, 98%);
+  
+  /* Override text color classes */
+  --dark: hsl(217, 33%, 17%);
+  --secondary: hsl(215, 16%, 47%);
 }
 
 .dark {
@@ -61,6 +69,24 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-dark {
+    color: hsl(217, 33%, 17%) !important;
+  }
+  
+  .text-secondary {
+    color: hsl(215, 16%, 47%) !important;
+  }
+  
+  .dark .text-dark {
+    color: hsl(0, 0%, 98%) !important;
+  }
+  
+  .dark .text-secondary {
+    color: hsl(240, 5%, 64.9%) !important;
   }
 }
 
