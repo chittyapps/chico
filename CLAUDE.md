@@ -24,10 +24,13 @@ npm start                   # Run production server
 npm run db:push            # Push schema changes to database (Drizzle Kit)
 ```
 
-### Type Checking
+### Type Checking & Quality
 ```bash
 npm run check              # Run TypeScript type checking
 ```
+
+### Testing
+Currently no dedicated test suite is configured. Type safety is enforced through TypeScript strict mode and Zod validation at runtime.
 
 ## Architecture Overview
 
@@ -49,10 +52,13 @@ npm run check              # Run TypeScript type checking
 - **Entry Point**: `index.ts` - Express server with Vite integration
 - **Routes**: `routes.ts` - API route registration
 - **Database**: `db.ts` - Drizzle ORM configuration
+- **Storage**: `storage.ts` - Database abstraction layer with interfaces
 - **Services**: 
-  - `openai.ts` - Lead categorization and response generation
-  - `twilio.ts` - SMS messaging integration
+  - `claude.ts` - AI lead categorization with rule-based fallback
+  - `openai.ts` - GPT-4o integration for advanced AI features
+  - `twilio.ts` - SMS messaging integration with webhook handling
 - **Session Storage**: PostgreSQL-backed sessions
+- **Vite Integration**: `vite.ts` - Development middleware and static file serving
 
 ### Database Schema (`/shared/schema.ts`)
 Core entities with relationships:
@@ -87,3 +93,5 @@ Core entities with relationships:
 - In production, static files are served from `dist/public`
 - Database migrations use Drizzle Kit with configuration in `drizzle.config.ts`
 - Replit-specific tooling is conditionally loaded in development
+- Services gracefully degrade to demo mode when external credentials are unavailable
+- AI features support both OpenAI and Claude services for flexibility and cost optimization
