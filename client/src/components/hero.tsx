@@ -18,10 +18,6 @@ export default function Hero() {
               <Button 
                 size="lg" 
                 className="bg-primary text-white hover:bg-blue-700 dark:bg-primary dark:hover:bg-blue-600 px-8 py-4 text-lg cursor-pointer"
-                onClick={() => {
-                  console.log('Start trial button clicked');
-                  alert('Button clicked! This would start the free trial.');
-                }}
                 data-testid="button-start-trial-hero"
               >
                 Start 14-Day Free Trial
@@ -31,7 +27,6 @@ export default function Hero() {
                 size="lg"
                 className="border-gray-300 dark:border-gray-600 text-dark dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-4 text-lg cursor-pointer"
                 onClick={() => {
-                  console.log('Demo button clicked');
                   window.location.href = '/demo';
                 }}
                 data-testid="button-watch-demo"
@@ -39,13 +34,6 @@ export default function Hero() {
                 <Play className="w-4 h-4 mr-2" />
                 Try Live Demo
               </Button>
-              <a 
-                href="/debug" 
-                className="text-sm text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
-                data-testid="link-debug"
-              >
-                Debug buttons →
-              </a>
             </div>
 
             <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0 text-sm text-secondary dark:text-gray-400">
